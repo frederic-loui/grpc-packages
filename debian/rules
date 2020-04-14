@@ -2,9 +2,7 @@
 # -*- makefile -*-
 
 # output every command that modifies files on the build system.
-DH_VERBOSE = 1
-
-export DEB_LDFLAGS_MAINT_STRIP = -Wl,-Bsymbolic-functions
+#DH_VERBOSE = 1
 
 DPKG_EXPORT_BUILDFLAGS = 1
 include /usr/share/dpkg/default.mk
@@ -20,7 +18,7 @@ export GRPC_PYTHON_BUILD_WITH_CYTHON = 1
 export GRPC_PYTHON_BUILD_SYSTEM_ZLIB = 1
 export GRPC_PYTHON_BUILD_SYSTEM_CARES = 1
 export GRPC_PYTHON_BUILD_SYSTEM_OPENSSL = 1
-export GRPC_PYTHON_ENABLE_DOCUMENTATION_BUILD = 1
+#export GRPC_PYTHON_ENABLE_DOCUMENTATION_BUILD = 1
 
 # package maintainers to append CFLAGS
 #export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
@@ -41,8 +39,7 @@ override_dh_auto_clean:
 	dh_auto_clean
 	dh_auto_clean -O--buildsystem=pybuild
 	find $(CURDIR)/src/python/grpcio/ -name \*.so -delete
-	$(RM) -rf $(CURDIR)/src/python/grpcio/grpcio.egg-info/ \
-		$(CURDIR)/.eggs/
+	$(RM) -rf $(CURDIR)/src/python/grpcio/grpcio.egg-info/
 	$(RM) -f \
 		$(CURDIR)/src/python/grpcio/grpc/_cython/_credentials/roots.pem \
 		$(CURDIR)/src/python/grpcio/grpc/_cython/cygrpc.cpp \
@@ -80,8 +77,7 @@ override_dh_missing:
 	dh_missing --list-missing
 
 %:
-#	dh $@ --with=python2,python3
-	dh $@ --with=python3
+	dh $@ --with=python2,python3
 
 .PHONY: override_dh_auto_clean override_dh_auto_configure \
 	override_dh_auto_build override_dh_auto_test \
