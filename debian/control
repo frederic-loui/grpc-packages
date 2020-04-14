@@ -13,7 +13,8 @@ Build-Depends: debhelper (>= 11~), zlib1g-dev, libssl-dev, libprotobuf-dev, prot
  python-setuptools, python3-setuptools,
  python-pkg-resources, python3-pkg-resources,
  python-sphinx, python3-sphinx,
- python-sphinx-rtd-theme, python3-sphinx-rtd-theme
+ python3-sphinx-rtd-theme
+# python-sphinx-rtd-theme, python3-sphinx-rtd-theme
 Standards-Version: 4.2.1
 Section: libs
 Homepage: http://www.grpc.io/
